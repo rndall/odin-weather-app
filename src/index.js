@@ -13,9 +13,28 @@ async function fetchWeatherData(location, isCelcius) {
     if (!response.ok) throw new Error(`Response status: ${response.status}`)
 
     const data = await response.json()
-    console.log(data)
+    const weatherData = getWeatherData(data)
+    return weatherData
   } catch (err) {
     console.error(err)
+  }
+}
+
+function getWeatherData(data) {
+  const { resolvedAddress, currentConditions, days } = data
+  const { temp, feelslike, humidity, precip, conditions, icon } =
+    currentConditions
+  const { tempmax, tempmin } = days[0]
+  return {
+    resolvedAddress,
+    temp,
+    tempmax,
+    tempmin,
+    feelslike,
+    humidity,
+    precip,
+    conditions,
+    icon,
   }
 }
 

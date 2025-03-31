@@ -28,6 +28,7 @@ body {
 .form__label {
   text-transform: uppercase;
   font-size: 0.875rem;
+  font-weight: bold;
 }
 
 .form__input {
@@ -42,6 +43,11 @@ body {
   border-radius: 0.75rem;
   padding-block: 4px;
   margin-top: 12px;
+  background-color: var(--card-highlight);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .results {

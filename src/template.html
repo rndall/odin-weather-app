@@ -14,6 +14,38 @@
         <input class="form__input" type="text" id="location" required />
         <button class="form__button">Search</button>
       </form>
+
+      <div class="results">
+        <div>
+          <h2 id="location">Mabalacat City</h2>
+          <p id="condition">Partially cloudy</p>
+        </div>
+        <div class="results__condition">
+          <div class="results__weather">
+            <img class="results__img" src="#" />
+            <div>
+              <div class="results__temp-group">
+                <p class="results__temp">24°</p>
+                <span
+                  ><button class="button button--active" id="celcius">C</button
+                  ><button class="button" id="fahrenheit">F</button></span
+                >
+              </div>
+              <div class="divider"></div>
+              <div class="results__high-low">
+                <p>High <span id="high">35°</span></p>
+                <p>|</p>
+                <p>Low <span id="low">26°</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="results__extra">
+            <p>Feels Like <span id="feels">38°</span></p>
+            <p>Humidity <span id="humidity">46%</span></p>
+            <p>Precipitation <span id="precip">12%</span></p>
+          </div>
+        </div>
+      </div>
     </main>
   </body>
 </html>

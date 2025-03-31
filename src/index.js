@@ -1,8 +1,14 @@
-import "./assets/reset.css"
+import "./assets/css/reset.css"
+import "./assets/css/style.css"
+import clearDay from "./assets/icons/clear-day.svg"
 import key from "./key"
 
 const form = document.querySelector("form")
 const locationInput = document.querySelector("#location")
+const resultsDiv = document.querySelector(".results")
+const resultsImg = document.querySelector(".results__img")
+
+resultsImg.src = clearDay
 
 async function fetchWeatherData(location, isCelcius) {
   const base =

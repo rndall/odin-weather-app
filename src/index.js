@@ -1,12 +1,13 @@
 import "./assets/css/reset.css"
 import "./assets/css/style.css"
 import key from "./key"
-import showInfo from "./weather-card"
+import { showInfo, getIsCelciius } from "./weather-card"
 
 const form = document.querySelector("form")
 const locationInput = document.querySelector("#location")
+let lastLocationInput
 
-async function fetchWeatherData(location, isCelcius = true) {
+async function fetchWeatherData(location, isCelcius) {
   const base =
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
   const url = `${base}${location}?key=${key}${
@@ -47,9 +48,14 @@ async function submitForm(e) {
   e.preventDefault()
 
   if (!locationInput.value) return
-
-  const weatherData = await fetchWeatherData(locationInput.value.trim())
+  const weatherData = await fetchWeatherData(
+    locationInput.value.trim(),
+    getIsCelciius()
+  )
   showInfo(weatherData)
+  lastLocationInput = locationInput.value
   form.reset()
 }
 form.addEventListener("submit", submitForm)
+
+export { lastLocationInput, fetchWeatherData }

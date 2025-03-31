@@ -26,9 +26,16 @@
             <div>
               <div class="results__temp-group">
                 <p class="results__temp"></p>
-                <span
-                  ><button class="button button--active" id="celcius">C</button
-                  ><button class="button" id="fahrenheit">F</button></span
+                <span class="unit-toggle"
+                  ><button
+                    class="button button--active"
+                    id="celcius"
+                    value="true"
+                  >
+                    C</button
+                  ><button class="button" id="fahrenheit" value="false">
+                    F
+                  </button></span
                 >
               </div>
               <div class="divider"></div>
@@ -41,7 +48,7 @@
           </div>
           <div class="results__extra">
             <p>Feels Like <span id="feels"></span></p>
-            <p>Humidity <span id="humidity">/span></p>
+            <p>Humidity <span id="humidity"></span></p>
             <p>Precipitation <span id="precip"></span></p>
           </div>
         </div>

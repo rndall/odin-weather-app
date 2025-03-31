@@ -1,16 +1,12 @@
 import "./assets/css/reset.css"
 import "./assets/css/style.css"
-import clearDay from "./assets/icons/clear-day.svg"
 import key from "./key"
+import showInfo from "./weather-card"
 
 const form = document.querySelector("form")
 const locationInput = document.querySelector("#location")
-const resultsDiv = document.querySelector(".results")
-const resultsImg = document.querySelector(".results__img")
 
-resultsImg.src = clearDay
-
-async function fetchWeatherData(location, isCelcius) {
+async function fetchWeatherData(location, isCelcius = true) {
   const base =
     "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/"
   const url = `${base}${location}?key=${key}${
@@ -53,7 +49,7 @@ async function submitForm(e) {
   if (!locationInput.value) return
 
   const weatherData = await fetchWeatherData(locationInput.value.trim())
-  console.log(weatherData)
+  showInfo(weatherData)
   form.reset()
 }
 form.addEventListener("submit", submitForm)

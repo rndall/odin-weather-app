@@ -5,7 +5,19 @@ import { showInfo, getIsCelciius } from "./weather-card"
 
 const form = document.querySelector("form")
 const locationInput = document.querySelector("#location")
+const resultsDiv = document.querySelector(".results")
+const loading = document.querySelector(".loading")
 let lastLocationInput
+
+function showLoading() {
+  resultsDiv.classList.add("results--hidden")
+  loading.classList.remove("loading--hidden")
+}
+
+function removeLoading() {
+  resultsDiv.classList.remove("results--hidden")
+  loading.classList.add("loading--hidden")
+}
 
 async function fetchWeatherData(location, isCelcius) {
   const base =
@@ -14,6 +26,7 @@ async function fetchWeatherData(location, isCelcius) {
     isCelcius ? "&unitGroup=metric" : ""
   }`
   try {
+    showLoading()
     const response = await fetch(url)
 
     if (!response.ok) throw new Error(`Response status: ${response.status}`)
@@ -23,6 +36,8 @@ async function fetchWeatherData(location, isCelcius) {
     return weatherData
   } catch (err) {
     console.error(err)
+  } finally {
+    removeLoading()
   }
 }
 
